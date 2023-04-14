@@ -1,11 +1,11 @@
 <html>
 
 <head>
-
+  {% load static %}
 
 
     <!-- Bootstrap -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href=" {% static 'proyectoWebApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
      <!-- Fonts -->
     
@@ -14,15 +14,18 @@
      
 
     <!-- Styles -->
-    <link href="/css/gestion.css" rel="stylesheet">
+    <link href="{% static 'proyectoWebApp/css/gestion.css' %}" rel="stylesheet">
 </head>
 
 <body>
 
     <h1 class="site-heading text-center text-white d-none d-lg-block">
       
-        <span class="site-heading-lower">Gestión de Pedidos</span>
-      </h1>
+        <span class="site-heading-lower font-weight-bold">VIDEO-SHOP</span>
+
+    </h1>
+    
+    
 
 
  <!-- Barra de navegacion  -->
@@ -60,13 +63,13 @@
    <section class="page-section clearfix">
     <div class="container">
       <div class="intro">
-        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/img/principal.jpg" alt="">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'proyectoWebApp/img/principal.jpg' %}" alt="">
         <div class="intro-text left-0 text-center bg-faded p-5 rounded">
           <h2 class="section-heading mb-4" >
-            <span class="section-heading-upper">Puntualidad</span>
+            <span class="section-heading-upper">Para los amantes de lo retro</span>
             <span class="section-heading-lower">El mejor stock</span>
           </h2>
-          <p class="mb-3">En la puertra de tu casa en menos de 48 h con el envío normal. En menos de 24 h con el envío express.
+          <p class="mb-3"> Echas de menos los videoclub antiguos y te gustaría volver a disfrutarlos de nuevo? Bienvenido a los años 90. Aqui encontrarás merchandising, peliculas, y mucho  mas...
           </p>
          
         </div>
@@ -86,7 +89,7 @@
                 <span class="section-heading-upper">Compromiso total</span>
                 <span class="section-heading-lower">Garantizado</span>
               </h2>
-              <p class="mb-0">Con más de 75 años de experiencia a nuestras espaldas, desde Gestión de Pedidos tenemos los conocimientos y herramientas necesarios para llevar cualquier objeto a la puerta de su casa con puntualidad y profesionalidad.</p>
+              <p class="mb-0">Gracias a nuestra nueva web, podrás disfrutar de lo retro desde el salón de tu casa. Echa un ojo a nuestra web, diviértete y adquiere los que mas te guste. Además de la tienda, puedes entretenerte leyendo nuestro blog o puedes acceder a increible descuentos en plataformas como netflix, HBO, Disney, ... accediendo a la pestaña servicios. NO TE PIERDAS NADA!</p>
             </div>
           </div>
         </div>
@@ -122,13 +125,13 @@
         	<a href="sample.html" class="link">Aviso legal</a> ·
         	<a href="sample.html" class="link">Cookies</a>
 		</p>
-        <p class="m-0 mbt1">&copy; Gestión de Pedidos 2020</p>
+        <p class="m-0 mbt1">&copy; Gestión de Pedidos 2023</p>
       </div>
 	</footer>
 
     <!-- Bootstrap -->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'proyectoWebApp/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'proyectoWebApp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
 </body>
 
