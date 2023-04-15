@@ -14,10 +14,5 @@ def contacto(request):
 def shop(request):
     return render(request, "proyectoWebApp\shop.html")
 
-# def blog(request):
-#     return render(request, ' proyectoWebApp\blog.html ')  #si no lo carga cuando se cree la app, probar con otra forma
-
 def blog(request):
-    t1 = loader.get_template(" proyectoWebApp/blog.html")
-    documento = t1.render({})
-    return HttpResponse(documento)
+    return render(request, ' proyectoWebApp\blog.html ')  #mirar si cambiamos el dir en setting.py
