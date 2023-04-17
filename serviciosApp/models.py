@@ -2,8 +2,8 @@ from django.db import models
 
 class Servicio(models.Model):
     titulo = models.CharField(max_length=50)
-    contenido = models.CharField(max_length=50)
-    imagen = models.ImageField()
+    contenido = models.CharField(max_length=250)
+    imagen = models.ImageField(upload_to="servicios")   #uploaded_to es opcional. Crea una subcarpeta en media llamada "servicios" y guarda ahí los archivos media
     """se crean los campos created & updated para filtrar en la tabla"""
     created = models.DateTimeField(auto_now_add =True) #agrega la fecha automa cuando se cree el registro
     updated = models.DateTimeField(auto_now_add =True) #agrega la fecha automa cuando se actualice el registro

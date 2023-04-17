@@ -7,6 +7,25 @@
 
 <!-- CONTENIDO EXCLUSIVO DE SERVICIOS -->
 
+{% for i in lista_servicios %}
+
+<section class="page-section clearfix">
+<div class="container">
+    <div class="intro">
+    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{ i.imagen.url }}" alt="" style= " width : 70%" >
+    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+        <h1 class="section-heading mb-4" >
+        <span class="section-heading-UPPER font-weight-bold">{{ i.titulo }}</span>
+        </h1>
+        <p class="mb-3"> {{ i.contenido }}     </p>
+       
+    </div>
+    </div>
+</div>
+</section>
+
+
+{% endfor %}
     
 <!--  FIN DEL CONTENIDO EXCLUSIVO DE SERVICIOS -->
 
