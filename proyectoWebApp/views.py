@@ -11,8 +11,5 @@ def contacto(request):
 def shop(request):
     return render(request, "shop.html")
 
-def blog(request):
-    context = locals()
-    template ="blog.html"
-    return render(request, template, context)  #mirar si cambiamos el dir en setting.py
+
 
