@@ -6,7 +6,48 @@
 {% block content %} <!--  etiq de apertura de los contenido exclusivos del home -->
 
 <!-- CONTENIDO EXCLUSIVO DE SHOP -->
-esto es el blog
+
+{% for i in lista_posts %}
+
+<section class="page-section clearfix">
+<div class="container">
+    <div class="intro">
+    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{ i.imagen.url }}" alt="" style= " width : 50%" >
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+            <h2 class="section-heading mb-4" >
+            <span class="section-heading-lower">{{ i.titulo }}</span>
+            <span class="section-heading-upper"> {{ i.contenido }}</span>
+            </h2>
+            <div style=" text-align : left; font-size: 0.8 em;"> 
+                Autor: {{ i.autor }} <br>
+
+                {% for j in  i.categorias.all %}
+                Categoria: {{j.nombre}}
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+</section>
+
+
+{% endfor %}
+
+    <!--  LO QUE QUIERO AHORA ES PONER TODAS LAS CATEGORIAS ABAJO DE FORMA QUE CUANDO EL USUARIO PULSE, SALGAN TODOS LOS POST  DE ESA CATEGORIA. -->
+    <section>
+    <div style="width: 75%; margin:auto; text-align:center; color: white; font-weight: 700">
+        filtrar por categorias: &nbsp;&nbsp;
+        {% for i in lista_posts %}    <!-- Este primer bucle for recorro los atributos del queryset de post -->
+
+            {% for j in i.categorias.all %} <!-- Con este segundo bucle recorro el queryset de categorias. post.categorias.all es un queryset con todas las categorias. Tengo que recorrerlo -->
+            {{ j.nombre }} &nbsp;&nbsp;
+            {% endfor %}
+
+        {% endfor %}
+
+    </div>
+    </section>
 
     
 <!--  FIN DEL CONTENIDO EXCLUSIVO DE SHOP -->
