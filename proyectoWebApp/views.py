@@ -3,14 +3,16 @@ from django.shortcuts import render, HttpResponse
 
 
 def home(request):  
-    return render(request, "proyectoWebApp\home.html")
-
+    return render(request, "home.html")
 
 def contacto(request):
-    return render(request, "proyectoWebApp\contacto.html")
+    return render(request, "contacto.html")
 
 def shop(request):
-    return render(request, "proyectoWebApp\shop.html")
+    return render(request, "shop.html")
 
 def blog(request):
-    return render(request, ' proyectoWebApp\blog.html ')  #mirar si cambiamos el dir en setting.py
+    context = locals()
+    template ="blog.html"
+    return render(request, template, context)  #mirar si cambiamos el dir en setting.py
+
