@@ -5,5 +5,5 @@ urlpatterns = [
     #el 1er arg es la palabra para la url. El 2arg es la ruta a la view. El 3arg es el nombre que le damos a la ruta entera.
     
     path("", views.blog, name ="Blog"),
-    path("categoria/<int:categoria_id>/", views.FiltroCategoria, name ="FiltroCategoria"),
+    path("categoria/<nombreCategoria>/", views.FiltroCategoria, name ="FiltroCategoria"),
 ]
