@@ -17,7 +17,7 @@ class Categoria(models.Model):
 class Post(models.Model):
     """en este modelo se guardarán los post creados. Cada post, estará asociado a un usuario(autor) y a una categoría"""
     titulo =     models.CharField(max_length=50)
-    contenido =  models.CharField(max_length=50)
+    contenido =  models.TextField()
     imagen =     models.ImageField(upload_to="blogApp", null =True, blank = True)
     autor =      models.ForeignKey(User, on_delete=models.CASCADE) #establecemos la relacion 1:N entre la tabla User predefinida en Django y la tabla Post
     categorias = models.ManyToManyField(Categoria)  #establecemos la relacion N:M entre la tabla Post y Categorias( un post puede estar en varias categorias y viceversa). Si eliminamos el autor=> se eliminarán sus posts.
