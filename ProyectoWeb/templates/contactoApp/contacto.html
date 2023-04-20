@@ -7,7 +7,16 @@
 
 <!-- CONTENIDO EXCLUSIVO DE CONTACTO -->
 
-este es el contacto
+<div class="contenedorFormulario">
+
+    <form action ="" method="POST"  style="text-align: center;">
+        {% csrf_token %}   
+        <table style ="color: white;"> {{miFormulario.as_table}} </table>
+        <input class="btn btn-light" type = "submit" value ="Enviar" style="width:200px; margin-right:160px; margin-top:20px">
+
+    </form>
+
+</div>
     
 <!--  FIN DEL CONTENIDO EXCLUSIVO DE CONTACTO -->
 
