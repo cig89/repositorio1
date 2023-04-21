@@ -1,5 +1,5 @@
-from unittest import loader
-from django.shortcuts import render, HttpResponse
+
+from django.shortcuts import render
 
 
 def home(request):  
@@ -7,8 +7,7 @@ def home(request):
 
 
 
-def shop(request):
-    return render(request, "shop.html")
+
 
 
 
