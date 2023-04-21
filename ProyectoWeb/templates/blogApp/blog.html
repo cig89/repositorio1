@@ -10,16 +10,29 @@
 <div class="container-fluid mr-5  mt-5 text-light">
 
     <div class="container"></div>
-    <p class="lead"> Desconecta y sumérgete en la lectura de los siguientes artículos...</p>
+    <p class="lead"> Bienvenid@ a nuestro Blog! </p>
+    <p>Un espacio para desconectar y disfrutar de la lectura de artículos superintersantes relacionado con el mundo del cine.</p>
     <hr style= " border-color: white" >
+
+    <!--  FILTRAR POR CATEGORIAS:  aparecen todas las categorías en la parte superior de la pantalla para filtrar -->
+    <p style="display: inline;"> Filtrar por categorias:</p>
+
+    {% for c in lista_categorias %}   
+        <a href="{% url 'FiltroCategoria' c.nombre %}"><span class ="badge badge-warning"> {{ c.nombre }}</span></a>
+    {% endfor %}
+    <hr><hr>
+    
+
+    <!--  FIN FILTRO POR CATEGORIAS -->
 
     {% for i in lista_posts %}
 
-        <div class="row mb-5" >
+            <div class="row mb-5" >
             <!--  articulos  -->
             <div class="col-4 float-end" >
                 <img   class = "img-fluid" src="{{ i.imagen.url }}" alt="">
-                <p class = "lead text-left " style=" font-size: 80%"> fecha creación: {{ i.created }} </p>
+                <p class = "lead text-left " style=" font-size: 80%"> Fecha de creación: {{ i.created }} </p>
+                <p class = "lead text-left " style=" font-size: 80%"> Autor: {{ i.autor }} </p>
             </div>
 
             <div class="col-8">
@@ -45,7 +58,23 @@
     {% endfor %}
 </div>
 
+    <!-- mensaje final de la sección de servicios. -->
+    <section class="page-section cta">
+        <div class="container">
+            <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner text-center rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper">Mas informacion</span>
+                </h2>
+                <p class="mb-0"> Te gustaría poder redactar y publicar tus propios artículos en esta sección. Regístrate en la página y contacta con nosotros!</p>
 
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+        <!-- fin del mensaje -->
 
     
 <!--  FIN DEL CONTENIDO EXCLUSIVO DE SHOP -->

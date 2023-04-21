@@ -9,9 +9,13 @@
 
 <div class="container-fluid mr-5  mt-5 text-light">
 
-    <div class="container"></div>
-    <p class="lead"> Desconecta y sumérgete en la lectura de los siguientes artículos...</p>
-    <hr style= " border-color: white" >
+
+    <!--  mensaje que advierte al usuario que está viendo los post de la categoria seleccionada. Esto es opcional, es para darle mayor profesionalidad a la pagina. -->
+        <p style="display:inline">Estas viendo todos los Posts de la categoria:</p>
+        <p style="font-size: 1.5em; display:inline">{{ob_categoria.nombre}}</p>  
+
+        <hr style= " border-color: white" >
+    <!--  find del mensaje -->
 
     {% for i in lista_posts_filtrados %}
 
@@ -45,6 +49,23 @@
     {% endfor %}
 </div>
 
+    <!-- mensaje final de la sección de servicios. -->
+    <section class="page-section cta">
+        <div class="container">
+            <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner text-center rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper">Mas informacion</span>
+                </h2>
+                <p class="mb-0"> Te gustaría poder redactar y publicar tus propios artículos en esta sección. Regístrate en la página y contacta con nosotros!</p>
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+        <!-- fin del mensaje -->
 
 
     

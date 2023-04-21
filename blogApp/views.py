@@ -4,7 +4,8 @@ from .models import Post,Categoria
 
 def blog(request):
     lista_posts = Post.objects.all()  # Devuelve un queryset(una lista de objetos)
-    return render(request, "blogApp/blog.html", {"lista_posts": lista_posts} )  #el tercero argumento es para pasarle el la variable al template
+    lista_categorias = Categoria.objects.all()  #devuelve un queryset con todas las categorias
+    return render(request, "blogApp/blog.html", {"lista_posts": lista_posts, "lista_categorias": lista_categorias} )  #el tercero argumento es para pasarle el la variable al template
 
 
 def FiltroCategoria(request, nombreCategoria):
@@ -17,6 +18,6 @@ def FiltroCategoria(request, nombreCategoria):
     if lista_posts_filtrados ==None or lista_posts_filtrados ==[]:
         return HttpResponse( f" no existen posts para la categoria: {ob_categoria}" )
     
-    return render(request, "blogApp/filtrarPorCategoria.html", {"lista_posts_filtrados": lista_posts_filtrados  }) 
+    return render(request, "blogApp/filtrarPorCategoria.html", {"ob_categoria":ob_categoria,"lista_posts_filtrados": lista_posts_filtrados  }) 
 
     
