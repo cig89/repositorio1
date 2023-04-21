@@ -6,7 +6,22 @@
 {% block content %} <!--  etiq de apertura de los contenido exclusivos del home -->
 
 <!-- CONTENIDO EXCLUSIVO DE SHOP -->
-esto es la tienda
+{% for i in lista_productos %}
+
+<section class="page-section clearfix">
+<div class="container">
+    <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{ i.imagen.url }}" alt="" style= " width : 45%" >
+        <div class="intro-text left-0 text-center bg-faded p-2 rounded">
+            <h2 class="section-heading mb-4" ><span class="section-heading-upper">{{ i.nombre }}</span></h2>
+            <p> <span class="section-heading-lower"> {{ i.precio }}</span>    </p>       
+        </div>
+    </div>
+</div>
+</section>
+
+
+{% endfor %}
 
     
 <!--  FIN DEL CONTENIDO EXCLUSIVO DE SHOP -->
