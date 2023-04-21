@@ -130,3 +130,28 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT =BASE_DIR / 'ProyectoWeb/media'
+
+
+#CONFIGURACION DE EMAIL PARA QUE DJANGO PUEDA ENVIAR CORREOS
+
+EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST ="smtp.gmail.com"        
+EMAIL_USE_TLS = True   #gmail require autenticacion TSL. Otros correos pueden no tener autenticacion o TLS
+EMAIL_USE_LLS = False
+EMAIL_PORT =587
+EMAIL_HOST_USER = "paginawebtokio@gmail.com"
+EMAIL_HOST_PASSWORD ="anonimo1234"
+
+# EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_HOST ="smtp-mail.outlook.com"        
+# EMAIL_USE_TLS = True   #gmail require autenticacion TSL. Otros correos pueden no tener autenticacion o TLS
+# EMAIL_PORT =587
+# EMAIL_HOST_USER = "paginawebtokio@gmail.com"
+# EMAIL_HOST_PASSWORD ="anonimo1234"
+
+# EMAIL_BACKEND ="django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_HOST ="smtp.mail.yahoo.com"        
+# EMAIL_USE_TLS = True   #gmail require autenticacion TSL. Otros correos pueden no tener autenticacion o TLS
+# EMAIL_PORT =587
+# EMAIL_HOST_USER = "cig89cc@yahoo.com"
+# EMAIL_HOST_PASSWORD ="aicwwmnxohzxeudr" #contraseña de apliacción en yahoo

@@ -1,0 +1,26 @@
+{% extends "base.html" %}  <!--  con esta instruccion insertamos la plantilla base.html -->
+
+{% load static %} <!--  cargamos todo lo que tengamos en la carpeta static -->
+
+{% block content %} <!--  etiq de apertura de los contenido exclusivos del home -->
+
+<!-- CONTENIDO EXCLUSIVO DE CONTACTO -->
+<section class="page-section clearfix">
+<div class="container">
+    <div class="intro" >
+    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'proyectoWebApp/img/contactoApp_info_No_Enviada.jpg' %}" alt="" style="width: 40%">
+    <div class="intro-text left-0 text-center bg-faded p-5 rounded" >
+        <h2 class="section-heading mb-4"  >
+        <span class="section-heading-upper">No se ha podido enviar su correo!</span>
+        </h2>
+        <p class="mb-3"> Por favor, vuelva a intentarlo pasados unos segundos o llame al teléfono: 643 102 2515</p>
+        
+    </div>
+    </div>
+</div>
+</section>
+
+    
+<!--  FIN DEL CONTENIDO EXCLUSIVO DE CONTACTO -->
+
+{% endblock %}
