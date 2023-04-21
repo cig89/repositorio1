@@ -17,7 +17,7 @@ admin.site.register(CategoriaProd, CategoriaProdAdmin)    #esto es obligatorio, 
 #La clase creada a continuación es opcinal, simplemene nos permite personalizar como se ve la tabla y porque cambos buscar y filtrar
 class ProductoAdmin(admin.ModelAdmin):
     list_display  =  ['nombre', 'precio', 'disponibilidad', 'created','updated']        # esto son los campos que mostrará la tabla en el panel de administracion
-    search_fields =  ['nombre', 'precio', 'disponibilidad','created', 'updated']        # esto son los campos para buscar la información
+    search_fields =  ['nombre', 'precio', 'disponibilidad', 'created', 'updated']        # esto son los campos para buscar la información
     list_filter   =  ['nombre']                                           # son los filtros que aparecen 
     
     
