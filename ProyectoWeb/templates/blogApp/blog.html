@@ -31,8 +31,10 @@
             <!--  articulos  -->
             <div class="col-4 float-end" >
                 <img   class = "img-fluid" src="{{ i.imagen.url }}" alt="">
-                <p class = "lead text-left " style=" font-size: 80%"> Fecha de creación: {{ i.created }} </p>
-                <p class = "lead text-left " style=" font-size: 80%"> Autor: {{ i.autor }} </p>
+                <div class = "lead text-left " style=" font-size: 80%">
+                    <p > Fecha de creación: {{ i.created }} </p>
+                    <p style="line-height: 0.6em;"> Autor: {{ i.autor }} </p>
+                </div>
             </div>
 
             <div class="col-8">
