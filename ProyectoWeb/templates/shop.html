@@ -6,23 +6,31 @@
 {% block content %} <!--  etiq de apertura de los contenido exclusivos del home -->
 
 <!-- CONTENIDO EXCLUSIVO DE SHOP -->
-{% for i in lista_productos %}
 
-<section class="page-section clearfix">
 <div class="container">
-    <div class="intro">
-        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{ i.imagen.url }}" alt="" style= " width : 45%" >
-        <div class="intro-text left-0 text-center bg-faded p-2 rounded">
-            <h2 class="section-heading mb-4" ><span class="section-heading-upper">{{ i.nombre }}</span></h2>
-            <p> <span class="section-heading-lower"> {{ i.precio }}</span>    </p>       
+
+    <div class="row">
+
+        {% for i in lista_productos %}
+        <div class="col-md-3" > <!-- le ponemos un ancho de 3 para que quepan 4 imagenes -->
+            <!-- le introducimos una etq style. esto es puede ahcer tambien en la hoja de estilos externa gestion.css -->
+            <style> 
+                #tarjetaShop:hover {scale: 1.12; transition: all 0.3s}
+            </style>
+            <div class="card " style="margin: 15px 15px" id="tarjetaShop">
+                <img src="{{ i.imagen.url }}" class="card-img-top">
+                <!-- cargo un card-body para meterle el texto a la tarjeta card -->
+                <div class="card-body">
+
+                    <h6 class="card-title text-center"> {{i.nombre}} </h6>
+                    <p class="card-text text-center" >   {{i.precio}}€</p>
+
+                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
-</div>
-</section>
-
-
-{% endfor %}
-
+</div> 
     
 <!--  FIN DEL CONTENIDO EXCLUSIVO DE SHOP -->
 
