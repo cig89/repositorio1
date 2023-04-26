@@ -1,3 +1,6 @@
+
+<!-- para la creación del carro, se ha usado la etq <table> de boostrap, la cual, esta formada por "thread", "tbody", "tfoot", donde se pueden añadir elementos -->
+
 <table class="table table-bordered" style="color:white">
 
     <thead>
@@ -13,12 +16,12 @@
         </tr>
     </thead>
     <tbody>
-        {% if request.session.carro.items %}
-            {% for key,value in request.session.carro.items %}
-            <tr class="text-center">
+        {% if request.session.carro.items %} <!-- se comprueba que la sesión carro tiene productos. -->
+            {% for key,value in request.session.carro.items %} <!-- Si tiene productos se itera sobre ellos mostrando el nombre y la cantidad. -->
+            <tr class="text-left">
                 <td> {{ value.nombre }}</td>
                 <td> {{ value.cantidad }}</td>
-                <td> 
+                <td> <!-- ademas del nombre y la cantidad, se muestra una etq ancla pra sumar o restarlos -->
                     <a href=" {% url 'Carro:Agregar' value.producto_id %}" class="btn btn-sm btn-success">+</a>
                     <a href=" {% url 'Carro:Restar' value.producto_id %}" class="btn btn-sm btn-success">-</a><br>
                     {{value.precio}}€
@@ -28,7 +31,7 @@
             </tr>
             {% endfor %}
 
-        {%else%}
+        {%else%} <!-- Si no tiene productos -->
             <tr>
                 <td colspan="3">
                     <div class="alert alert-danger text-center"> sin productos </div>
@@ -40,7 +43,7 @@
     </tbody>
 
     <tfoot>
-        <td colspan="3"> Importe Carro: {{ importe_total }}€ </td>
+        <td colspan="3" class="text-center" > Importe Carro: {{ importe_total }}€ </td>
     </tfoot>
 
 </table>

@@ -17,8 +17,8 @@ class Carro:
         
         if not carro: # si no existe ningún carro al iniciar la sesión, se crea uno nuevo. Este será un dic: { id_producto1: {nombre: xxx, precio: xxx, imagen:xxx,...}, id_producto2:...}
             carro = self.session["carro"] = {} #se crea una sesión nueva
-        #si existe un carro en esa sesión, se utiliza el que exista. Esto es cuando el usuario sale de la pagina tienda pero no cierra el navegador y luego vuelve.
-        self.carro = carro
+        self.carro = carro  #si existe un carro en esa sesión, se utiliza el que exista. Esto es cuando el usuario sale de la pagina tienda pero no cierra el navegador y luego vuelve.
+
             
         
     def agregar_producto(self, producto):
@@ -43,25 +43,16 @@ class Carro:
                     
         self.guardar_carro()  # esto actualizará la sesión 
         
-    def restar_producto(self,producto):
+    def restar_producto(self,producto):                      
         """Esta funcion resta una unidad al producto del carro si existe el producto. Si no existe dicho producto, no hace nada"""
-        if str(producto.id) not in  self.carro.keys(): #si el producto exise en el carro..
-            for key,value in self.carro.items(): #se itera los productos del carro...
-                if key ==str(producto.id):  #si alguna key coindice con el producto.id, es decir, existe el producto en el carro...
-                    
-                    if value["cantidad"] >= 1:  #Si hay mas de una unidad...
-                        value["cantidad"] -= 1  #se le resta uno
-                    else:                       #si hay cero unidades, se elimina el producto del carro.
-                        self.eliminar_producto(producto)
+        for key,value in self.carro.items():
+            if key==str(producto.id):
+                value["cantidad"] = value["cantidad"] -1
+                if value["cantidad"] <1:
+                    self.eliminar_producto(producto)
+        self.guardar_carro()   
                         
-                    """ como lo ha hecho el
-                    value["cantidad"] = value["cantidad"]-1
-                        if value["cantidad"] <1:
-                            self.eliminar_producto(producto)
-                    """
-                        
-        self.guardar_carro
-        
+
     def eliminar_producto(self,producto):
         """Esta función se encarga de elminar un producto del carro, es decir, un producto con todas sus undiades. 
         No confudir con restar, la cual, no elimina el producto, sino solo una unidad de dicho producto."""
@@ -74,9 +65,7 @@ class Carro:
             
     def eliminar_todos_productos(self):
         """esta función elimina TODOS los productos, es decir, vacía el carro"""
-        # del self.carro    --Opcion 1: Se puede eliminar el carro
-        self.carro ={}      #--Opcion2: se puede crear un dict vacio 
-        
+        carro = self.session["carro"] = {}        
         self.session.modified =True
         
                 
@@ -85,8 +74,7 @@ class Carro:
         self.session["carro"] = self.carro  # Actualiza el carro
         self.session.modified = True
         
-        
-        
+
 #SE CREAN LAS VISTAS
 
 def agregar_producto_vista(request,producto_id):
