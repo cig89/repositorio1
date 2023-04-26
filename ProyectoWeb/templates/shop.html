@@ -13,7 +13,16 @@
 </style>
 
 
-<div class="container">
+<div class="container-fluid">
+
+
+    <div class=" mt-5 text-light">
+        <p class="lead"> Bienvenid@ a la tienda! </p>
+        <p>Esta es nuestra sección mas especial. Disfruta de todos nuestros productos...</p>
+        <hr style= " border-color: white" >
+    </div>
+
+
 
     <div style="float:right"> <!-- agrego el template carro.html -->
         {% include "carro.html" %}
@@ -24,7 +33,7 @@
     <div class="row"> <!-- fila donde se almacenan los artículos -->
 
         {% for i in lista_productos %}
-        <div class="col-md-4" > <!-- le ponemos un ancho de 4 para que quepan 3 imagenes en cada fila -->
+        <div class="col-md-3" > <!-- le ponemos un ancho de 3 para que quepan 4 imagenes en cada fila -->
             <div class="card " style="margin: 15px 15px" id="tarjetaShop">
                 <img src="{{ i.imagen.url }}" class="card-img-top">
                 <!-- cargo un card-body para meterle el texto a la tarjeta card -->
