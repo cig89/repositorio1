@@ -8,21 +8,19 @@ class Carro:
     
     def __init__(self,request):
         
-        # self.request = request
-        # self.session = request.session  #iniciamos la sesion
+        self.request = request
+        self.session = request.session  #iniciamos la sesion
         
-        # carro = self.session.get("carro")
+        carro = self.session.get("carro")
         
-        # ''' creamos o recuperamos el carro en la sesion si el usuario inicia sesión o vuelve a la sesión ya iniciada. '''
+        ''' creamos o recuperamos el carro en la sesion si el usuario inicia sesión o vuelve a la sesión ya iniciada. '''
         
-        # if not carro: # si no existe ningún carro al iniciar la sesión, se crea uno nuevo. Este será un dic: { id_producto1: {nombre: xxx, precio: xxx, imagen:xxx,...}, id_producto2:...}
-        #     carro = self.session["carro"] = {} #se crea una sesión nueva
-        # else: #si existe un carro en esa sesión, se utiliza el que exista. Esto es cuando el usuario sale de la pagina tienda pero no cierra el navegador y luego vuelve.
-        #     self.carro = carro
+        if not carro: # si no existe ningún carro al iniciar la sesión, se crea uno nuevo. Este será un dic: { id_producto1: {nombre: xxx, precio: xxx, imagen:xxx,...}, id_producto2:...}
+            carro = self.session["carro"] = {} #se crea una sesión nueva
+        #si existe un carro en esa sesión, se utiliza el que exista. Esto es cuando el usuario sale de la pagina tienda pero no cierra el navegador y luego vuelve.
+        self.carro = carro
             
-        if request.session.get("carro", False): #vemos si existe una sesión llamada "carro". Si no existe, se crea, y es un diccionario vacío.
-            self.carro = request.session["carro"] ={}
-
+        
     def agregar_producto(self, producto):
         """Esta funcion hace dos cosas: 
         1-Si el producto NO existe en el carro, añade el producto al carro 
@@ -33,7 +31,7 @@ class Carro:
             self.carro[producto.id] = {
                 "producto_id": producto.id,
                 "nombre": producto.nombre,
-                "precio": str(producto.precio),
+                "precio": producto.precio,
                 "cantidad": 1,
                 "imagen": producto.imagen.url
             }       
@@ -128,6 +126,4 @@ def eliminar_todos_productos_vista(request):
     carro = Carro(request)
     carro.eliminar_todos_productos()
     return redirect("Shop")   #Redireccionamos a la tienda. Dentro del redirect metemos la url, es decir, el nombre que le pusimos a la url de la tienda
-        
-        
         

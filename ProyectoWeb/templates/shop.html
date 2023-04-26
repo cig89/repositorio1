@@ -12,24 +12,36 @@
     #tarjetaShop:hover {scale: 1.12; transition: all 0.3s}
 </style>
 
+
 <div class="container">
 
-    <div class="row">
+    <div style="float:right"> <!-- agrego el template carro.html -->
+        {% include "carro.html" %}
+    </div>
+
+
+
+    <div class="row"> <!-- fila donde se almacenan los artículos -->
 
         {% for i in lista_productos %}
-        <div class="col-md-3" > <!-- le ponemos un ancho de 3 para que quepan 4 imagenes -->
+        <div class="col-md-4" > <!-- le ponemos un ancho de 4 para que quepan 3 imagenes en cada fila -->
             <div class="card " style="margin: 15px 15px" id="tarjetaShop">
                 <img src="{{ i.imagen.url }}" class="card-img-top">
                 <!-- cargo un card-body para meterle el texto a la tarjeta card -->
                 <div class="card-body">
-
                     <h6 class="card-title text-center"> {{i.nombre}} </h6>
                     <p class="card-text text-center" >   {{i.precio}}€</p>
-
                 </div>
+                <!-- se cierra el card-body -->
+                <!-- se mete el botton en el card-footer -->
+                <div class ="clard-footer text-center">
+                    <a href="{% url 'Carro:Agregar' i.id %}" class="btn btn-danger"> Agregar</a>
+                </div>
+                <!-- se cierra el card-footer -->
             </div>
         </div>
         {% endfor %}
+
     </div>
 </div> 
     
