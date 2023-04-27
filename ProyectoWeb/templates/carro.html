@@ -1,29 +1,27 @@
 
 <!-- para la creación del carro, se ha usado la etq <table> de boostrap, la cual, esta formada por "thread", "tbody", "tfoot", donde se pueden añadir elementos -->
-
+    {% load static %}
+    
 <table class="table table-bordered" style="color:white">
 
     <thead>
-        <tr> 
-            <th colspan="3" class="text-center">carro compras</th>
-            
-        </tr>
+        <img class="intro-img img-fluid  mb-lg-0 rounded" src="{% static 'proyectoWebApp/img/carroCompra.png' %}" alt="" style="height: 18%; margin-left: 70px">
         <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Suma</th>
+            <th>PRODUCTO</th>
+            <th>UDS</th>
+            <th>SUMA</th>
 
         </tr>
     </thead>
     <tbody>
         {% if request.session.carro.items %} <!-- se comprueba que la sesión carro tiene productos. -->
             {% for key,value in request.session.carro.items %} <!-- Si tiene productos se itera sobre ellos mostrando el nombre y la cantidad. -->
-            <tr class="text-left">
-                <td> {{ value.nombre }}</td>
-                <td> {{ value.cantidad }}</td>
+            <tr>
+                <td  class="text-left"> {{ value.nombre }}</td>
+                <td class="text-center"> {{ value.cantidad }}</td>
                 <td> <!-- ademas del nombre y la cantidad, se muestra una etq ancla pra sumar o restarlos -->
-                    <a href=" {% url 'Carro:Agregar' value.producto_id %}" class="btn btn-sm btn-success">+</a>
-                    <a href=" {% url 'Carro:Restar' value.producto_id %}" class="btn btn-sm btn-success">-</a><br>
+                    <a href=" {% url 'Carro:Agregar' value.producto_id %}" class="btn btn-sm btn-warning">+</a>
+                    <a href=" {% url 'Carro:Restar' value.producto_id %}" class="btn btn-sm btn-warning">-</a><br>
                     {{value.precio}}€
 
                 </td>
@@ -34,7 +32,7 @@
         {%else%} <!-- Si no tiene productos -->
             <tr>
                 <td colspan="3">
-                    <div class="alert alert-danger text-center"> sin productos </div>
+                    <div class="alert btn-warning text-center"> sin productos  </div>
                 </td>
 
             </tr>
