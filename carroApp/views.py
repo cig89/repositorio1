@@ -40,6 +40,7 @@ class Carro:
             for key,value in self.carro.items(): #se itera los productos del carro...
                 if key ==str(producto.id):  #si alguna key coindice con el producto.id...
                     value["cantidad"] += 1  #se incrementa en uno...
+                    value["precio"] = value["cantidad"] * producto.precio    #aqui incremntamos el precio si hay menos unidades
                     
         self.guardar_carro()  # esto actualizará la sesión 
         
@@ -48,6 +49,8 @@ class Carro:
         for key,value in self.carro.items():
             if key==str(producto.id):
                 value["cantidad"] = value["cantidad"] -1
+                value["precio"] = value["cantidad"] * producto.precio    #aqui se decrementa el precio si hay menos unidades
+
                 if value["cantidad"] <1:
                     self.eliminar_producto(producto)
         self.guardar_carro()   
