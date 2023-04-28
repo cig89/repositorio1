@@ -20,8 +20,8 @@
                 <td  class="text-center"> {{ value.nombre }}</td>
                 <td class="text-center"> {{ value.cantidad }}<br>
                     <!-- ademas del nombre y la cantidad, se muestran 3 botones -->
-                    <a href=" {% url 'Carro:Agregar' value.producto_id %}"  class="btn btn-sm btn-warning" >+</a>    <!--  Suma una unidad -->
-                    <a href=" {% url 'Carro:Restar' value.producto_id %}"   class="btn btn-sm btn-warning">-</a>     <!--  Resta una unidad -->
+                    <a href=" {% url 'Carro:Agregar'  value.producto_id %}"  class="btn btn-sm btn-warning" >+</a>    <!--  Suma una unidad -->
+                    <a href=" {% url 'Carro:Restar'   value.producto_id %}"   class="btn btn-sm btn-warning">-</a>     <!--  Resta una unidad -->
                     <a href=" {% url 'Carro:Eliminar' value.producto_id %}" class="btn btn-sm btn-danger">x</a> <br> <!-- Elimina el producto del carro -->
                 </td>
                 <td> 

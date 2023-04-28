@@ -46,15 +46,15 @@ class Carro:
         
     def restar_producto(self,producto):                      
         """Esta funcion resta una unidad al producto del carro si existe el producto. Si no existe dicho producto, no hace nada"""
-        for key,value in self.carro.items():
+        copiaDict = self.carro.copy()  #Se crea una copia porque si elimino el producto(cuando la cantidad es cero) me sale: RuntimeError: dictionary changed size during iteration
+        for key,value in copiaDict.items():
             if key==str(producto.id):
-                value["cantidad"] = value["cantidad"] -1
-                value["precio"] = value["cantidad"] * producto.precio    #aqui se decrementa el precio si hay menos unidades
-
-                if value["cantidad"] <1:
-                    self.eliminar_producto(producto)
-        self.guardar_carro()   
-                        
+                value["cantidad"] -=1
+                value["precio"] = value["cantidad"] * producto.precio             
+                #si la cantidad del producto es igual a cero, lo ideal sería eliminar dicho prod del carro
+                if value["cantidad"] == 0:
+                    del self.carro[key]
+        self.guardar_carro()           
 
     def eliminar_producto(self,producto):
         """Esta función se encarga de elminar un producto del carro, es decir, un producto con todas sus undiades. 
