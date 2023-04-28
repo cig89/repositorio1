@@ -50,7 +50,7 @@ class Carro:
         for key,value in copiaDict.items():
             if key==str(producto.id):
                 value["cantidad"] -=1
-                value["precio"] = value["cantidad"] * producto.precio             
+                value["precio"] = value["cantidad"] * producto.precio           
                 #si la cantidad del producto es igual a cero, lo ideal sería eliminar dicho prod del carro
                 if value["cantidad"] == 0:
                     del self.carro[key]

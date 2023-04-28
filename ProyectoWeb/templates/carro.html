@@ -20,12 +20,12 @@
                 <td  class="text-center"> {{ value.nombre }}</td>
                 <td class="text-center"> {{ value.cantidad }}<br>
                     <!-- ademas del nombre y la cantidad, se muestran 3 botones -->
-                    <a href=" {% url 'Carro:Agregar'  value.producto_id %}"  class="btn btn-sm btn-warning" >+</a>    <!--  Suma una unidad -->
+                    <a href=" {% url 'Carro:Agregar'  value.producto_id %}"   class="btn btn-sm btn-warning" >+</a>    <!--  Suma una unidad -->
                     <a href=" {% url 'Carro:Restar'   value.producto_id %}"   class="btn btn-sm btn-warning">-</a>     <!--  Resta una unidad -->
-                    <a href=" {% url 'Carro:Eliminar' value.producto_id %}" class="btn btn-sm btn-danger">x</a> <br> <!-- Elimina el producto del carro -->
+                    <a href=" {% url 'Carro:Eliminar' value.producto_id %}"   class="btn btn-sm btn-danger">x</a> <br> <!-- Elimina el producto del carro -->
                 </td>
                 <td> 
-                    {{value.precio}}€
+                    {{value.precio | floatformat:2}}€ <!-- el floatformat se pone para limitar los decimales. es un filtro -->
                 </td>
 
             </tr>
@@ -44,7 +44,7 @@
     </tbody>
 
     <tfoot>
-        <td colspan="3" class="text-center" > Importe Carro: {{ importe_total }}€ &nbsp;&nbsp;
+        <td colspan="3" class="text-center" > Importe Carro: {{ importe_total | floatformat:2 }}€ &nbsp;&nbsp;
             <!-- ahora le ponemos un boton para vaciar el carro. Le decimos que aparezca SOLO cuando haya productos. -->
             {% if request.session.carro.items %} <!-- aqui le digo que cuando haya productos -->
                 <a href=" {% url 'Carro:Limpiar' %}"  class="btn btn-sm btn-danger" >vaciar carro </a>

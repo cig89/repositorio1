@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}  <!--  con esta instruccion insertamos la plantilla base.html -->
+
+{% load static %} <!--  cargamos todo lo que tengamos en la carpeta static -->
+
+{% block content %} <!--  etiq de apertura de los contenido exclusivos del home -->
+
+<!-- CONTENIDO EXCLUSIVO DE SHOP -->
+
+<!-- le introducimos una etq style. esto es puede ahcer tambien en la hoja de estilos externa gestion.css -->
+<style> 
+    #tarjetaShop:hover {scale: 1.12; transition: all 0.3s}
+</style>
+
+
+<div class="container">
+
+    <!--  mensaje que advierte al usuario que está viendo los post de la categoria seleccionada. Esto es opcional, es para darle mayor profesionalidad a la pagina. -->
+        <div style="color:white">
+            <p style="display:inline">Estas en la categoria:</p>
+            <p style="font-size: 1.5em; display:inline">{{ob_categoria.nombre}}.</p> &nbsp;&nbsp;
+            <p style="display:inline">Para ver todas, haz click sobre la prestaña SHOP.</p>
+        </div>
+        <hr style= " border-color: white" >
+    <!--  find del mensaje -->
+
+
+
+    <div style="float:right"> <!-- agrego el template carro.html -->
+        {% include "carro.html" %}
+    </div>
+
+
+
+    <div class="row"> <!-- fila donde se almacenan los artículos -->
+
+        {% for i in lista_productos_filtrados %}
+        <div class="col-md-4" > <!-- le ponemos un ancho de 4 columnas, para que cada imagen ocupe 4 columnas => habra 3 imagenes -->
+            <div class="card " style="margin: 15px 15px" id="tarjetaShop">
+                <img src="{{ i.imagen.url }}" class="card-img-top">
+                <!-- cargo un card-body para meterle el texto a la tarjeta card -->
+                <div class="card-body text-center">
+                    <h6 class="card-title text-center"> {{i.nombre}} </h6>
+                    <!-- la categoría, a la cual se accede con otro bucle for -->
+                        <a href="{% url 'FiltroCategoriaShop' i.categorias %}" class="text-center"><span class ="badge badge-primary  "> {{ i.categorias}}</span></a>
+                    <!-- fin de la categoria -->
+                    <p class="card-text text-center" >   {{i.precio}}€</p>
+                </div>
+                <!-- se cierra el card-body -->
+                <!-- se mete el botton en el card-footer -->
+                <div class ="clard-footer text-center">
+                    <a href="{% url 'Carro:Agregar' i.id %}" class="btn btn-warning"> Agregar</a>
+                </div>
+                <!-- se cierra el card-footer -->
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div> 
+    
+<!--  FIN DEL CONTENIDO EXCLUSIVO DE SHOP -->
+
+{% endblock %}
