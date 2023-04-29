@@ -32,7 +32,7 @@
                     <h4 class="text-warning" style="font-weight:800"> {{ i.titulo }} </h4>               
                     <!-- la categoría, a la cual se accede con otro bucle for -->
                     {% for j in  i.categorias.all %}
-                        <a href="{% url 'FiltroCategoria' j.nombre %}"><span class ="badge badge-warning"> {{ j.nombre }}</span></a>
+                        <a href="{% url 'FiltroCategoria' j.nombre %}"><span class ="badge badge-pill badge-warning" > {{ j.nombre }}</span></a>
                     {% endfor %}
                 </div>
                 <!-- el contenido -->

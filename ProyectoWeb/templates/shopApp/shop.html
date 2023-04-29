@@ -26,7 +26,7 @@
         <p style="display: inline; color:white"> Filtrar por categorias:</p>
 
         {% for c in lista_categorias %}   
-            <a href="{% url 'FiltroCategoriaShop' c.nombre %}"><span class ="badge badge-primary"> {{ c.nombre }}</span></a>
+            <a href="{% url 'FiltroCategoriaShop' c.nombre %}"><span class ="badge badge-pill badge-primary"> {{ c.nombre }}</span></a>
         {% endfor %}
         <hr><hr>
     <!--  FIN FILTRO POR CATEGORIAS -->
@@ -47,10 +47,9 @@
                 <div class="card-body text-center">
                     <h6 class="card-title text-center"> {{i.nombre}} </h6>
                     <!-- la categoría, a la cual se accede con otro bucle for -->
-                        <a href="{% url 'FiltroCategoriaShop' i.categorias %}" class="text-center"><span class ="badge badge-primary  "> {{ i.categorias}}</span></a>
+                        <a href="{% url 'FiltroCategoriaShop' i.categorias %}" class="text-center"><span class ="badge badge-pill badge-primary  "> {{ i.categorias}}</span></a>
                     <!-- fin de la categoria -->
-                    <p class="card-text text-center" >   {{i.precio}}€</p>
-
+                    <p class="card-text text-center" >   {{i.precio | floatformat:2}}€</p> <!-- floatformat es para poner siempre dos decimales -->
                 </div>
 
                 <!-- se cierra el card-body -->
