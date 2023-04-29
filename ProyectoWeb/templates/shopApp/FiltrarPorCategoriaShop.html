@@ -40,10 +40,13 @@
                 <img src="{{ i.imagen.url }}" class="card-img-top">
                 <!-- cargo un card-body para meterle el texto a la tarjeta card -->
                 <div class="card-body text-center">
-                    <h6 class="card-title text-center"> {{i.nombre}} </h6>
-                    <!-- la categoría, a la cual se accede con otro bucle for -->
+                    <!-- se pone el nombre -->
+                    <h6 class="card-title text-center"> 
+                        <a href="{% url 'DescripcionProductoShop' i.nombre %}"> {{i.nombre}}</a>
+                    </h6> 
+                    <!-- se pone la categoría, a la cual se accede con otro bucle for -->
                         <a href="{% url 'FiltroCategoriaShop' i.categorias %}" class="text-center"><span class ="badge badge-pill badge-primary  "> {{ i.categorias}}</span></a>
-                    <!-- fin de la categoria -->
+                    <!-- se pone el precio-->
                     <p class="card-text text-center" >   {{i.precio}}€</p>
                 </div>
                 <!-- se cierra el card-body -->

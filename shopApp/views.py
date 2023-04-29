@@ -20,3 +20,12 @@ def FiltroCategoriaShop(request,nombreCategoriaShop):
         return HttpResponse(f"No existen productos para la categoria '{ob_categoria}")
     
     return render(request, "shopApp/filtrarPorCategoriaShop.html", {"ob_categoria":ob_categoria,"lista_productos_filtrados": lista_productos_filtrados})
+
+
+#Creo una vista para mostrar la descripción de cada producto
+def DescripcionProducto(request,nombreProductoShop):
+    ob_producto = Producto.objects.filter(nombre =nombreProductoShop).first()  #Devuele el objeto con el nombre que le llega a la función
+    return render(request, "shopApp/descripcionProducto.html", {"ob_producto":ob_producto})
+
+
+    

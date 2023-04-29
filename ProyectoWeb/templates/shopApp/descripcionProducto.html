@@ -1,0 +1,37 @@
+
+{% extends "base.html" %}  <!--  con esta instruccion insertamos la plantilla base.html -->
+
+{% load static %} <!--  cargamos todo lo que tengamos en la carpeta static -->
+
+{% block content %} <!--  etiq de apertura de los contenido exclusivos del home -->
+
+<!-- CONTENIDO EXCLUSIVO DE HOME -->
+
+<!-- Heading -->
+<section class="page-section clearfix">
+<div class="container">
+    <div class="intro">
+    <img class="intro-img img-fluid rounded " src="{{ ob_producto.imagen.url }}" alt="" style="height:auto; max-width:46%; margin-left: 5cm">
+    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+        <!-- se añade el nombre  -->
+        <h2 class="section-heading mb-4"  style="display: inline-flex;"> <span class="section-heading-upper">{{ ob_producto.nombre}}</span></h2> &nbsp; &nbsp; 
+        <!-- se añade la categoria -->
+        <span class ="badge badge-pill badge-warning  "> {{ ob_producto.categorias}}</span>   
+        <!-- se añade la descripcion del producto -->
+        <p class="mb-3"> {{ ob_producto.descripcion }}</p>
+        <!-- Se añade un boton para que vaya a la pagina principal -->
+        <a href="{% url 'Shop' %}" class="btn btn-primary">volver</a>   <!--  boton para volver a la tienda -->
+        
+
+    </div>
+    </div>
+</div>
+</section>
+
+<!-- Message -->
+
+    
+<!--  FIN DEL CONTENIDO EXCLUSIVO DE HOME -->
+
+{% endblock %}
+
