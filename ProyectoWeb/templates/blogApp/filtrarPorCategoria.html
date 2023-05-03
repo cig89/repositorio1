@@ -17,40 +17,53 @@
         <hr style= " border-color: white" >
     <!--  find del mensaje -->
 
-    {% for i in lista_posts_filtrados %}
-
-        <div class="row mb-5" >
-            <!--  articulos  -->
-            <div class="col-4 float-end" >
-                <img   class = "img-fluid" src="{{ i.imagen.url }}" alt="">
-                <p class = "lead text-left " style=" font-size: 80%"> fecha creación: {{ i.created }} </p>
-            </div>
-
-            <div class="col-8">
-                <div >
-                    <!-- el titulo -->
-                    <h4 class="text-warning" style="font-weight:800"> {{ i.titulo }} </h4>               
-                    <!-- la categoría, a la cual se accede con otro bucle for -->
-                    {% for j in  i.categorias.all %}
-                        <a href="{% url 'FiltroCategoria' j.nombre %}"><span class ="badge badge-pill badge-warning" > {{ j.nombre }}</span></a>
-                    {% endfor %}
-                </div>
-                <!-- el contenido -->
-                <hr>
-                <div style="background-color:rgb(221, 207, 190)" class ="p-3">
-                    <p><span class="section-heading-upper text-dark"> {{ i.contenido }}</span></p>
-                    <!-- añado el boton mas al contenido -->
-                        
-                </div>
-                <hr>
- 
-            </div>
+    {% if not lista_post_filtrados %} <!-- Abro condicional por si no existen post para la categoria seleccionada por el usuario -->
+        <div class="container">
+            <div>
+                <h2 class="section-heading mb-4"  >
+                    <span class="section-heading-upper" style="color:white">Lo sentimos, no existen posts para esta categoria...</span>
+                </h2>
+                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'proyectoWebApp/img/will-smith-crying.jpg' %}" alt="" style="width: 40%">
+            </div><br><br>       
         </div>
-    {% endfor %}
+
+    {%else%} <!--  continuo el condiconal para mostrar los post si existen -->
+
+        {% for i in lista_posts_filtrados %}
+            <div class="row mb-5" >
+                <!--  articulos  -->
+                <div class="col-4 float-end" >
+                    <img   class = "img-fluid" src="{{ i.imagen.url }}" alt="">
+                    <p class = "lead text-left " style=" font-size: 80%"> fecha creación: {{ i.created }} </p>
+                </div>
+
+                <div class="col-8">
+                    <div >
+                        <!-- el titulo -->
+                        <h4 class="text-warning" style="font-weight:800"> {{ i.titulo }} </h4>               
+                        <!-- la categoría, a la cual se accede con otro bucle for -->
+                        {% for j in  i.categorias.all %}
+                            <a href="{% url 'FiltroCategoria' j.nombre %}"><span class ="badge badge-pill badge-warning" > {{ j.nombre }}</span></a>
+                        {% endfor %}
+                    </div>
+                    <!-- el contenido -->
+                    <hr>
+                    <div style="background-color:rgb(221, 207, 190)" class ="p-3">
+                        <p><span class="section-heading-upper text-dark"> {{ i.contenido }}</span></p>
+                        <!-- añado el boton mas al contenido -->
+                            
+                    </div>
+                    <hr>
+    
+                </div>
+            </div>
+        {% endfor %}
+        
+    {%endif%} <!-- fin del condicional -->
 </div>
 
-    <!-- mensaje final de la sección de servicios. -->
-    <section class="page-section cta">
+    
+    <section class="page-section cta"><!-- mensaje final de la sección de servicios. -->
         <div class="container">
             <div class="row">
             <div class="col-xl-9 mx-auto">
@@ -64,8 +77,8 @@
             </div>
             </div>
         </div>
-    </section>
-        <!-- fin del mensaje -->
+    </section><!-- fin del mensaje -->
+        
 
 
     
