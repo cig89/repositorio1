@@ -60,11 +60,11 @@
                 <!-- Le pongo el nombre de la persona -->
                 Hola  {{user.username}}  &nbsp  &nbsp   
                 <!-- le añado el boton "cerrar sesion" -->                                                                                                                
-                <a href="#"><span class =" text-light btn btn-outline-success">Cerrar Sesion</span></a>      
+                <a href="{% url 'Logout' %}"><span class =" text-light btn btn-outline-success">Cerrar Sesion</span></a>      
 
               {%else%} <!-- SI EL USUARIO NO ESTA LOGEADO -->
                 <!-- le añado el boton Iniciar Sesion -->
-                <a href="#"><span class =" text-light btn btn-outline-info">Iniciar Sesion </span></a> &nbsp
+                <a href="{% url 'Login' %}"><span class =" text-light btn btn-outline-info">Iniciar Sesion </span></a> &nbsp
                 <!-- Le añado el boton registrase -->
                 <a href="{% url 'FormularioRegistro' %}"><span class =" text-light btn btn-outline-success">Registrarse</span></a>
               {% endif %}

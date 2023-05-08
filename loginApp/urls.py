@@ -10,5 +10,7 @@ urlpatterns = [
     #path("", VistaRegistro.as_view(), name ="Autenticacion"),
     path("", views.get, name ="FormularioRegistro"),
     path("post/", views.post, name ="RecibirFormularioRegistro"),
+    path("login/", views.iniciar_sesion, name ="Login"),
+    path("logout/", views.cerrar_sesion, name ="Logout"),
     
 ]

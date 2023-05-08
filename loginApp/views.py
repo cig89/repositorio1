@@ -2,13 +2,13 @@
 from django.shortcuts import redirect, render
 from django.views import View
 
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth import login,logout,authenticate
 
 from django.contrib import messages
 
 
-        
+"""METODOS PARA EL FORMULARIO DE REGISTRO"""       
 def get(request): #Se crea el metodo get para mostrar el formulario en el html
     form = UserCreationForm()  #se crea el formulario usando la clase que proporciona Django
     return render (request, "loginApp/registro.html", {"form":form})
@@ -25,3 +25,34 @@ def post(request): #se crea el motodo post para gestionar la recepción dle form
             messages.error(request, form.error_messages[i])
             
         return render (request, "loginApp/registro.html", {"form":form})
+
+"""METODOS PARA EL FORMULARIO DE LOGIN"""
+def iniciar_sesion(request):
+    
+    if request.method == "POST": #si el usuario ha pulsado el boton enviar del formulario
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid(): #si el usuario es valido
+            nombre_usuario = form.cleaned_data.get("username") #rescatamos la info del input nombre. Se llama username
+            contraseña = form.cleaned_data.get("password") #rescatamos la info del input de la contraseña
+            #Ahora se contrasta esta info con la BBDD. Esto no se hace  manualmente, sino con el método 'authenticate'
+            usuario = authenticate(username=nombre_usuario, password=contraseña)  #con esto se autentica
+            if usuario is not None: #si el usuario existe
+                login(request, usuario) #lo logea
+                return redirect("Home")
+            else:
+                messages.error(request, "El usuario no valido")
+        else: #si el usuario no es válido
+            messages.error(request, "la información es incorrecta")
+                
+    else: #si el usuario NO ha pulsado el boton, muestramo el formulario       
+        #esta vista es la que muestra el formulario de registro
+        form = AuthenticationForm()   #se crea un objeto de la clase AuthenticationForm, que me permite hacer login
+        return render (request, "loginApp/login.html", {"form":form})
+
+
+    
+
+def cerrar_sesion(request):
+    """Esta función se encarga de salir de la sesión. esta función se ejecutara mediante un botón."""
+    logout(request)  #esto es un metodo de django
+    return redirect("Home")
