@@ -14,36 +14,18 @@
 <div class="contenedorFormulario">
 
     <br>
-    <p class="lead text-white fs-3 "> Regístrese en nuestra página para disfrutar al 100% de su contenido... </p>
-    <hr style= " border-color: white" >
+    <p class="lead text-white fs-3 "> Formulario de Registro </p>
+    <hr style= " border-color: white" ><br>
 
     
     <form action ="{% url 'FormularioRegistro' %}" method="POST"  style="text-align: center;">
         {% csrf_token %}   
         <table style ="color: white;"> {{form}} </table>
-        <input class="btn btn-success " type = "submit" value ="Enviar" style="width:200px; margin-right:160px; margin-top:20px">
+        <input class="btn btn-success " type = "submit" value ="Enviar" style="width:200px; margin-right:210px; margin-top:20px">
     </form>
 
-</div>
+</div><br><br>
 
-    <!-- Message -->
-    <section class="page-section cta">
-        <div class="container">
-            <div class="row">
-            <div class="col-xl-9 mx-auto">
-                <div class="cta-inner text-center rounded">
-                <h2 class="section-heading mb-4">
-                    <span class="section-heading-upper">Información de contacto</span>
-                </h2>
-                <span style="text-align: left">
-                        <p style="line-height: 0.6em;">DIRECCION:  Calle Melancolía, 7  CP: 10003  (Madrid)</p>
-                        <p style="line-height: 0.6em;">TLF:        643 103 964</p>
-                        <P style="line-height: 0.6em;">EMAIL:      video-shop@gmail.com</P>
-                </span>
-            </div>
-            </div>
-        </div>
-        </section>
 
 <!--  FIN DEL CONTENIDO EXCLUSIVO DE CONTACTO -->
 
