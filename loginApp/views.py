@@ -17,10 +17,6 @@ def post(request): #se crea el motodo post para gestionar la recepción dle form
     form = UserCreationForm(request.POST) #Se reciben los datos que el usario envia en el formulario
     
     if form.is_valid(): #si los datos que envía el usuario es válido. Is_valid se utiliza para valiar los campos del formulario
-        # 1-se almacena la información introducida por el usuario  en la tabla auth_user
-        usuario = form.save() 
-        # 2-Cuando se guarden los datos, el usuario tiene que estar logeado. Esto lo gestiona el objeto login. Se le introduce el request y los datos.
-        login(request,usuario)
         #3-Se redirecciona el usuario despues de enviar el formulario
         return redirect("Home") 
     
