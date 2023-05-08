@@ -6,10 +6,8 @@ from loginApp import views
 
 urlpatterns = [
     #el 1er arg es la palabra para la url. El 2arg es la ruta a la view. El 3arg es el nombre que le damos a la ruta entera.
-    
-    #path("", VistaRegistro.as_view(), name ="Autenticacion"),
+
     path("", views.get, name ="FormularioRegistro"),
-    path("post/", views.post, name ="RecibirFormularioRegistro"),
     path("login/", views.iniciar_sesion, name ="Login"),
     path("logout/", views.cerrar_sesion, name ="Logout"),
     
