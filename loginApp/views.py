@@ -7,9 +7,6 @@ from django.contrib.auth import login
 
 from django.contrib import messages
 
-def autentication(request):
-    return render(request, "loginApp/registro.html")
-
 
 class VistaRegistro(View):
     def get(self, request): #Se crea el metodo get para mostrar el formulario en el html
@@ -19,7 +16,7 @@ class VistaRegistro(View):
     def post(self, request): #se crea el motodo post para gestionar la recepción dle formulario y la redirección
         form = UserCreationForm(request.POST) #Se reciben los datos que el usario envia en el formulario
         
-        if form.is_valid(): #si los datos que envía el usuario es válido
+        if form.is_valid(): #si los datos que envía el usuario es válido. Is_valid se utiliza para valiar los campos del formulario
             # 1-se almacena la información introducida por el usuario  en la tabla auth_user
             usuario = form.save() 
             # 2-Cuando se guarden los datos, el usuario tiene que estar logeado. Esto lo gestiona el objeto login. Se le introduce el request y los datos.
@@ -33,4 +30,3 @@ class VistaRegistro(View):
                 
             return render (request, "loginApp/registro.html", {"form":form})
         
-    

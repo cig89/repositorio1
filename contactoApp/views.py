@@ -9,7 +9,7 @@ from ProyectoWeb import settings
 def contacto(request):
     formulario_contacto = FormularioContacto()
     
-    if request.method =="POST":
+    if request.method =="POST": # igualamos a POST porque este metodo se encaga de recoger los datos que envia el usuario con el post
         formulario_contacto = FormularioContacto(data = request.POST)  #Obtenemos la info intorducida en el formulario
         if formulario_contacto.is_valid():                             #Antes de acceder a los datos, hay que validarla
             nombre = request.POST.get("nombre")                        
