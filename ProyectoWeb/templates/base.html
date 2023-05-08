@@ -7,11 +7,11 @@
     <!-- Bootstrap -->
     <link href=" {% static 'proyectoWebApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-     <!-- Fonts -->
+    <!-- Fonts -->
+  
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
     
-     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
-     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
-     
 
     <!-- Styles -->
     <link href="{% static 'proyectoWebApp/css/gestion.css' %}" rel="stylesheet">
@@ -50,6 +50,28 @@
           <li class="nav-item px-lg-4 {% if request.path == '/contacto/' %} active {% endif %}">
             <a class="nav-link text-uppercase text-expanded" href="{% url 'Contacto' %}">Contacto</a>
           </li>
+          <li style="width: 2cm"> </li> <!-- añado un espacio  -->
+          <li >
+            <div style="color:white">  
+
+              {% if user.is_authenticated %} <!-- SI el usuario esta logeado -->
+                <!-- le pongo una imagen  -->
+                <div style="display: inline;"><img class="intro-img img-fluid  mb-lg-0 rounded" src="{% static 'proyectoWebApp/img/simbaSinFondo.png' %}" alt="" style="height:1cm; width: auto"></div>
+                <!-- Le pongo el nombre de la persona -->
+                Hola  {{user.username}}  &nbsp  &nbsp   
+                <!-- le añado el boton "cerrar sesion" -->                                                                                                                
+                <a href="#"><span class =" text-light btn btn-outline-success">Cerrar Sesion</span></a>      
+
+              {%else%} <!-- Si el usuario NO esta logeado -->
+                <!-- le añado el boton Iniciar Sesion -->
+                <a href="#"><span class =" text-light btn btn-outline-info">Iniciar Sesion </span></a> &nbsp
+                <!-- Le añado el boton registrase -->
+                <a href="{% url 'FormularioRegistro' %}"><span class =" text-light btn btn-outline-success">Registrarse</span></a>
+              {% endif %}
+
+            </div>
+          </li>
+
 
         </ul>
       </div>

@@ -7,11 +7,16 @@
 
 <!-- CONTENIDO EXCLUSIVO DE CONTACTO -->
 
+<style>
+    .helptext{display: none;}
+</style>
+
 <div class="contenedorFormulario">
 
     <br>
     <p class="lead text-white fs-3 "> Regístrese en nuestra página para disfrutar al 100% de su contenido... </p>
     <hr style= " border-color: white" >
+
     
     <form action ="http://127.0.0.1:8000/autenticacion/post/" method="POST"  style="text-align: center;">
         {% csrf_token %}   
