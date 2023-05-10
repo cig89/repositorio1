@@ -31,13 +31,15 @@
         <hr><hr>
     <!--  FIN FILTRO POR CATEGORIAS -->
 
-    <div style="float:right"> <!-- agrego el template carro.html -->
-        {% if request.user.is_authenticated %}
+    <!--  MUESTRO EL TEMPLATE CARRO.HTML. Solo lo muestro cuando el usuario se ha autentificado.  -->
+    <div style="float:right"> 
+        {% if request.user.is_authenticated %} <!-- Si el usuario se ha autentificado se muestra -->
             {% include "carro.html" %}
-        {%else%} 
-            <a href="{% url 'Login' %}" class="btn btn-danger btn-lg mt-3" >INICIA SESION para ver el carro</a> 
+        {%else%}                               <!-- Si el usuario NO se ha autentificado, no se muestra -->
+            <a href="{% url 'Login' %}" class="btn btn-danger btn-lg mt-3"  >INICIA SESION para ver el carro</a>
         {%endif%} 
     </div>
+    <!--  FIN DEL TEMPLATE CARRO.HTML -->
 
 
 

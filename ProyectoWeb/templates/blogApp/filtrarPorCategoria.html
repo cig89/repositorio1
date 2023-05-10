@@ -13,11 +13,11 @@
     <!--  mensaje que advierte al usuario que está viendo los post de la categoria seleccionada. Esto es opcional, es para darle mayor profesionalidad a la pagina. -->
         <p style="display:inline">Estas en la categoria:</p>
         <p style="font-size: 1.5em; display:inline">{{ob_categoria.nombre}}</p> &nbsp;&nbsp; 
-        <p style="display:inline">Para ver todas, haz click sobre la prestaña SHOP.</p>
+        <p style="display:inline">Para ver todas, haz click sobre la prestaña BLOG.</p>
         <hr style= " border-color: white" >
     <!--  find del mensaje -->
 
-    {% if not lista_post_filtrados %} <!-- Abro condicional por si no existen post para la categoria seleccionada por el usuario -->
+    {% if not lista_posts_filtrados %} <!-- Abro condicional por si no existen post para la categoria seleccionada por el usuario -->
         <div class="container">
             <div>
                 <h2 class="section-heading mb-4"  >

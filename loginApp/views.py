@@ -16,7 +16,8 @@ def get(request): #Se crea el metodo get para mostrar el formulario en el html
     
         if form.is_valid():           #1-si los datos que envía el usuario es válido. Is_valid se utiliza para valiar los campos del formulario
             form.save()               #2-se almacena la información introducida por el usuario  en la tabla auth_user
-            return redirect("Login")  #3-Se redirecciona el usuario despues de enviar el formulario
+            #return redirect("Login")  #3-Se redirecciona el usuario despues de enviar el formulario
+            return render (request, "loginApp/registroSatisfactorio.html")
         
         else:  #si hay fallo(la contraseña no cumple las validaciones de django), le digo que los muestre para evitar el error en la pagina. utilizo el metodo error_messages del objeto form, que es una lista.
             for i  in form.error_messages: #por cada mensaje de error que haya
@@ -24,7 +25,7 @@ def get(request): #Se crea el metodo get para mostrar el formulario en el html
             return render (request, "loginApp/registro.html", {"form":form})
 
         
-    else:   #si el usuario NO ha pulsado el boton, muestramo el formulario     
+    else:   #si el usuario NO ha pulsado el boton, se muestra el formulario     
         form = UserCreationForm()  #se crea el formulario usando la clase que proporciona Django
         return render (request, "loginApp/registro.html", {"form":form})
 

@@ -61,8 +61,12 @@
                     </div>
                     <!-- se cierra el card-body -->
                     <!-- se mete el botton en el card-footer -->
-                    <div class ="clard-footer text-center">
-                        <a href="{% url 'Carro:Agregar' i.id %}" class="btn btn-warning"> Agregar</a>
+                    <div class ="clard-footer text-center"><!-- se mete el botton en el card-footer -->
+                        {% if i.disponibilidad %}
+                        <a href="{% url 'Carro:Agregar' i.id %}" class="btn btn-warning" style="margin-bottom: 10px;"> Agregar a la cesta</a>
+                        {% else %}
+                            <p style="color:red"> fuera de stock</p>
+                        {%endif%}
                     </div>
                     <!-- se cierra el card-footer -->
                 </div>
