@@ -32,7 +32,11 @@
     <!--  FIN FILTRO POR CATEGORIAS -->
 
     <div style="float:right"> <!-- agrego el template carro.html -->
-        {% include "carro.html" %}
+        {% if request.user.is_authenticated %}
+            {% include "carro.html" %}
+        {%else%} 
+            <a href="{% url 'Login' %}" class="btn btn-danger btn-lg mt-3" >INICIA SESION para ver el carro</a> 
+        {%endif%} 
     </div>
 
 
