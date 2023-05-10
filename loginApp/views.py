@@ -18,10 +18,11 @@ def get(request): #Se crea el metodo get para mostrar el formulario en el html
             form.save()               #2-se almacena la información introducida por el usuario  en la tabla auth_user
             return redirect("Login")  #3-Se redirecciona el usuario despues de enviar el formulario
         
-        else:  #si hay algún fallo, le digo que los muestre para evitar el error en la pagina. utilizo el metodo error_messages del objeto form, que es una lista.
+        else:  #si hay fallo(la contraseña no cumple las validaciones de django), le digo que los muestre para evitar el error en la pagina. utilizo el metodo error_messages del objeto form, que es una lista.
             for i  in form.error_messages: #por cada mensaje de error que haya
                 messages.error(request, form.error_messages[i])
             return render (request, "loginApp/registro.html", {"form":form})
+
         
     else:   #si el usuario NO ha pulsado el boton, muestramo el formulario     
         form = UserCreationForm()  #se crea el formulario usando la clase que proporciona Django
@@ -40,13 +41,18 @@ def iniciar_sesion(request):
             #Ahora se contrasta esta info con la BBDD. Esto no se hace  manualmente, sino con el método 'authenticate'
             usuario = authenticate(username=nombre_usuario, password=contraseña)  #con esto se autentica
             if usuario is not None: #si el usuario existe
-                login(request, usuario) #lo logea
+                login(request, usuario) #lo logea y entra en la sesion
                 return redirect("Home")
-            else:
-                messages.error(request, "El usuario no valido")
+            else: #si el usuario NO existe
+                messages.error(request, "El usuario no existe")
+                return redirect("Login")
+
+            
         else: #si el usuario no es válido
-            messages.error(request, "la información es incorrecta")
-                
+            messages.error(request, "La información es incorrecta")
+            return redirect("Login")
+
+        
     else: #si el usuario NO ha pulsado el boton, muestramo el formulario       
         #esta vista es la que muestra el formulario de registro
         form = AuthenticationForm()   #se crea un objeto de la clase AuthenticationForm, que me permite hacer login

@@ -24,6 +24,14 @@
         <input class="btn btn-success " type = "submit" value ="Enviar" style="width:200px; margin-right:330px; margin-top:20px">
     </form>
 
+    <!-- a continación creo el mensaje de error  -->
+    {% if messages %} <!--  Si hay mensajes de error de django -->
+        {% for i in messages %}  <!-- recorro todos  -->
+        <div class="alert alert-warning text-center"> {{i}}</div>
+        {%endfor%}
+    {%endif%}
+    <!-- fin de los mensajes de error -->
+
 </div><br><br>
 
 
